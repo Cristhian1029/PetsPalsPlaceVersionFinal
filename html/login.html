@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .container button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background-color: #0056b3;
+        }
+
+        .container .toggle {
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .container .toggle:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.875em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .success {
+            color: green;
+            font-size: 0.875em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <h2 id="form-title">Iniciar Sesión</h2>
+        <div id="message" class="error"></div>
+        <form id="login-form" method="GET" onsubmit="login(event)">
+            <input type="text" name="username" placeholder="Nombre de usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <form id="register-form" method="GET" style="display: none;" onsubmit="register(event)">
+            <input type="text" name="username" placeholder="Nombre de usuario" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="password" name="confirm_password" placeholder="Confirmar contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
+        <div class="toggle" id="toggle-form">¿No tienes una cuenta? Regístrate</div>
+    </div>
+
+    <script>
+        const toggleForm = document.getElementById('toggle-form');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const formTitle = document.getElementById('form-title');
+        const message = document.getElementById('message');
+
+        toggleForm.addEventListener('click', () => {
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                formTitle.textContent = 'Iniciar Sesión';
+                toggleForm.textContent = '¿No tienes una cuenta? Regístrate';
+                message.className = 'error';
+                message.textContent = '';
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                formTitle.textContent = 'Registrarse';
+                toggleForm.textContent = '¿Ya tienes una cuenta? Inicia sesión';
+                message.className = 'error';
+                message.textContent = '';
+            }
+        });
+
+        function getFormData(form) {
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            return data;
+        }
+
+        function login(event) {
+            event.preventDefault(); // Evita el envío del formulario
+
+            const data = getFormData(loginForm);
+            const username = data.username;
+            const password = data.password;
+
+            const storedUsername = localStorage.getItem('username');
+            const storedPassword = localStorage.getItem('password');
+            const storedEmail = localStorage.getItem('email');
+
+            if (username === storedUsername && password === storedPassword) {
+                window.location.href = `profile.html?username=${encodeURIComponent(username)}&email=${encodeURIComponent(storedEmail)}`;
+            } else {
+                message.className = 'error';
+                message.textContent = 'Nombre de usuario o contraseña incorrectos.';
+            }
+        }
+
+        function register(event) {
+            event.preventDefault(); // Evita el envío del formulario
+
+            const data = getFormData(registerForm);
+            const username = data.username;
+            const email = data.email;
+            const password = data.password;
+            const confirmPassword = data.confirm_password;
+
+            if (password !== confirmPassword) {
+                message.className = 'error';
+                message.textContent = 'Las contraseñas no coinciden.';
+                return;
+            }
+
+            localStorage.setItem('username', username);
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+
+            message.className = 'success';
+            message.textContent = 'Usuario registrado exitosamente. Por favor, inicia sesión.';
+
+            // Mostrar el formulario de inicio de sesión y ocultar el formulario de registro
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+            formTitle.textContent = 'Iniciar Sesión';
+            toggleForm.textContent = '¿No tienes una cuenta? Regístrate';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>petspalsplace perfil | Profile </title>
+    <link rel="stylesheet" href="/css/perfil.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container light-style flex-grow-1 container-p-y">
+        <h4 class="font-weight-bold py-3 mb-4">
+            Account settings
+        </h4>
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list"
+                            href="#account-general">General</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-change-password">Change password</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-info">Info</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-social-links">Social links</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-connections">Connections</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-notifications">Notifications</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <!-- General -->
+                        <div class="tab-pane fade active show" id="account-general">
+                            <div class="card-body media align-items-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt
+                                    class="d-block ui-w-80">
+                                <div class="media-body ml-4">
+                                    <label class="btn btn-outline-primary">
+                                        Upload new photo
+                                        <input type="file" class="account-settings-fileinput">
+                                    </label> &nbsp;
+                                    <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                                    <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="form-label">Username</label>
+                                    <input id="usernameInput" type="text" class="form-control mb-1" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Name</label>
+                                    <input id="nameInput" type="text" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">E-mail</label>
+                                    <input id="emailInput" type="text" class="form-control mb-1" value="">
+                                    <div class="alert alert-warning mt-3">
+                                        Your email is not confirmed. Please check your inbox.<br>
+                                        <a href="javascript:void(0)">Resend confirmation</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Change Password -->
+                        <div class="tab-pane fade" id="account-change-password">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Current password</label>
+                                    <input id="currentPasswordInput" type="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">New password</label>
+                                    <input id="newPasswordInput" type="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Repeat new password</label>
+                                    <input id="confirmNewPasswordInput" type="password" class="form-control">
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="changePassword()">Guardar Cambios</button>
+                            </div>
+                        </div>
+                        <!-- Info -->
+                        <div class="tab-pane fade" id="account-info">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Bio</label>
+                                    <textarea id="bioInput" class="form-control"
+                                        rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Birthday</label>
+                                    <input id="birthdayInput" type="text" class="form-control" value="May 3, 1995">
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">Contact</h6>
+                                <div class="form-group">
+                                    <label class="form-label">Phone</label>
+                                    <input id="phoneInput" type="text" class="form-control"
+                                        value="+0 (123) 456 7891">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Website</label>
+                                    <input id="websiteInput" type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Social Links -->
+                        <div class="tab-pane fade" id="account-social-links">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Twitter</label>
+                                    <input id="twitterInput" type="text" class="form-control"
+                                        value="https://twitter.com/user">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Facebook</label>
+                                    <input id="facebookInput" type="text" class="form-control"
+                                        value="https://www.facebook.com/user">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Google+</label>
+                                    <input id="googleInput" type="text" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">LinkedIn</label>
+                                    <input id="linkedinInput" type="text" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Instagram</label>
+                                    <input id="instagramInput" type="text" class="form-control"
+                                        value="https://www.instagram.com/user">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Connections -->
+                        <div class="tab-pane fade" id="account-connections">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-twitter">Connect to
+                                    <strong>Twitter</strong></button>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <h5 class="mb-2">
+                                    <a href="javascript:void(0)" class="float-right text-muted"><i
+                                            class="ion ion-md-close"></i> Remove</a>
+                                    <i class="ion ion-logo-google text-google"></i>
+                                    You are connected to Google:
+                                </h5>
+                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                    data-cfemail="f9979498818e9c9595b994989095d79a9694">[email&#160;protected]</a>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-facebook">Connect to
+                                    <strong>Facebook</strong></button>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <button type="button" class="btn btn-instagram">Connect to
+                                    <strong>Instagram</strong></button>
+                            </div>
+                        </div>
+                        <!-- Notifications -->
+                        <div class="tab-pane fade" id="account-notifications">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">Activity</h6>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input id="forumCommentNotification" type="checkbox"
+                                            class="switcher-input" checked>
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me when someone comments on my forum</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input id="forumReplyNotification" type="checkbox"
+                                            class="switcher-input" checked>
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me when someone replies to my forum</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input id="friendRequestNotification" type="checkbox"
+                                            class="switcher-input">
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me when someone sends me a friend request</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body pb-2">
+                                <h6 class="mb-4">Application</h6>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input id="newsAnnouncementNotification" type="checkbox"
+                                            class="switcher-input" checked>
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me about news and announcements</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input id="productNotification" type="checkbox"
+                                            class="switcher-input">
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me about products</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="switcher">
+                                        <input id="forumInterestNotification" type="checkbox"
+                                            class="switcher-input" checked>
+                                        <span class="switcher-indicator">
+                                            <span class="switcher-yes"></span>
+                                            <span class="switcher-no"></span>
+                                        </span>
+                                        <span class="switcher-label">Notify me about forums of interest</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right mt-3">
+            <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>&nbsp;
+            <button type="button" class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para obtener parámetros de la URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+    
+        // Función para actualizar los datos del usuario en el formulario
+        function updateUserData(username, name, email, bio, birthday, phone, website, twitter, facebook, google, linkedin, instagram) {
+            document.getElementById('usernameInput').value = username;
+            document.getElementById('nameInput').value = name;
+            document.getElementById('emailInput').value = email;
+            document.getElementById('bioInput').value = bio;
+            document.getElementById('birthdayInput').value = birthday;
+            document.getElementById('phoneInput').value = phone;
+            document.getElementById('websiteInput').value = website;
+            document.getElementById('twitterInput').value = twitter;
+            document.getElementById('facebookInput').value = facebook;
+            document.getElementById('googleInput').value = google;
+            document.getElementById('linkedinInput').value = linkedin;
+            document.getElementById('instagramInput').value = instagram;
+        }
+    
+        // Obtener los parámetros de la URL
+        const username = getUrlParameter('username');
+        const email = getUrlParameter('email');
+    
+        // Actualizar los campos del formulario con los datos del usuario
+        updateUserData(username, '', email, '', 'May 3, 1995', '+0 (123) 456 7891', '', 'https://twitter.com/user', 'https://www.facebook.com/user', '', '', 'https://www.instagram.com/user');
+    
+        // Función para guardar cambios
+        function saveChanges() {
+            // Aquí puedes agregar la lógica para guardar los cambios
+            const username = document.getElementById('usernameInput').value;
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const bio = document.getElementById('bioInput').value;
+            const birthday = document.getElementById('birthdayInput').value;
+            const phone = document.getElementById('phoneInput').value;
+            const website = document.getElementById('websiteInput').value;
+            const twitter = document.getElementById('twitterInput').value;
+            const facebook = document.getElementById('facebookInput').value;
+            const google = document.getElementById('googleInput').value;
+            const linkedin = document.getElementById('linkedinInput').value;
+            const instagram = document.getElementById('instagramInput').value;
+    
+            // Guardar en localStorage para que solo el usuario pueda ver sus datos
+            localStorage.setItem('username', username);
+            localStorage.setItem('name', name);
+            localStorage.setItem('email', email);
+            localStorage.setItem('bio', bio);
+            localStorage.setItem('birthday', birthday);
+            localStorage.setItem('phone', phone);
+            localStorage.setItem('website', website);
+            localStorage.setItem('twitter', twitter);
+            localStorage.setItem('facebook', facebook);
+            localStorage.setItem('google', google);
+            localStorage.setItem('linkedin', linkedin);
+            localStorage.setItem('instagram', instagram);
+    
+            alert('Changes saved successfully!');
+    
+            // Redirigir a index.html después de guardar los cambios
+            window.location.href = '/index.html';
+        }
+    
+    // Función para cambiar la contraseña
+    function changePassword() {
+        const currentPassword = document.getElementById('currentPasswordInput').value;
+        const newPassword = document.getElementById('newPasswordInput').value;
+        const confirmNewPassword = document.getElementById('confirmNewPasswordInput').value;
+
+        // Validación de contraseñas
+        if (newPassword !== confirmNewPassword) {
+            alert('Las contraseñas nuevas no coinciden.');
+            return;
+        }
+
+        // Aquí puedes agregar la lógica para cambiar la contraseña en tu sistema
+        // Por ejemplo, podrías enviar una solicitud HTTP a tu servidor con la nueva contraseña
+
+        // Ejemplo de actualización en localStorage (simulado)
+        localStorage.setItem('password', newPassword);
+
+        alert('Contraseña cambiada exitosamente.');
+
+        // Limpiar los campos de contraseña
+        document.getElementById('currentPasswordInput').value = '';
+        document.getElementById('newPasswordInput').value = '';
+        document.getElementById('confirmNewPasswordInput').value = '';
+    }
+
+
+        // Cargar los datos del usuario desde localStorage (si existen)
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedUsername = localStorage.getItem('username');
+            const storedName = localStorage.getItem('name');
+            const storedEmail = localStorage.getItem('email');
+            const storedBio = localStorage.getItem('bio');
+            const storedBirthday = localStorage.getItem('birthday');
+            const storedPhone = localStorage.getItem('phone');
+            const storedWebsite = localStorage.getItem('website');
+            const storedTwitter = localStorage.getItem('twitter');
+            const storedFacebook = localStorage.getItem('facebook');
+            const storedGoogle = localStorage.getItem('google');
+            const storedLinkedin = localStorage.getItem('linkedin');
+            const storedInstagram = localStorage.getItem('instagram');
+    
+            if (storedUsername && storedName && storedEmail && storedBio && storedBirthday && storedPhone && storedWebsite &&
+                storedTwitter && storedFacebook && storedGoogle && storedLinkedin && storedInstagram) {
+                updateUserData(storedUsername, storedName, storedEmail, storedBio, storedBirthday, storedPhone, storedWebsite,
+                    storedTwitter, storedFacebook, storedGoogle, storedLinkedin, storedInstagram);
+            }
+        });
+    </script>
+</body>
+
+</html>
